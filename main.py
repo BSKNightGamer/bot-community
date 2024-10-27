@@ -115,4 +115,4 @@ async def helpcommand(interaction):
 
 server_on()
 
-bot.run("MTMwMDA5MjE4OTAyNzYwMjQ4NA.Gbc7V5.va9Z4ImBcsP-ujxhG8CMyX3QMXXevAycBYS-Sk")
+bot.run(os.getenv('TOKEN'))
