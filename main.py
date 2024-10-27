@@ -65,7 +65,7 @@ async def on_message(message):
 # กำหนดคำสั่งให้บอท
 
 @bot.command()
-async def hello(ctx):
+async def max(ctx):
     await ctx.send(f"hello {ctx.author.name}!")
 
 
