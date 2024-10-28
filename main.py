@@ -2,12 +2,13 @@ import os
 import discord
 from discord.ext import commands
 from discord import app_commands
+import time
 
 from myserver import server_on
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
-
+start_time = time.time()
 
 # //////////////////// Bot Event /////////////////////////
 # คำสั่ง bot พร้อมใช้งานแล้ว
@@ -65,7 +66,7 @@ async def on_message(message):
 # กำหนดคำสั่งให้บอท
 
 @bot.command()
-async def max(ctx):
+async def hello(ctx):
     await ctx.send(f"hello {ctx.author.name}!")
 
 
@@ -85,6 +86,18 @@ async def hellocommand(interaction):
 async def namecommand(interaction, name : str):
     await interaction.response.send_message(f"Hello {name}")
 
+@bot.tree.command(name='uptime')
+@app_commands.describe(name="Uptime's")
+async def uptimecommand(interaction):
+
+    current_time = time.time()
+    uptime_seconds = int(current_time - start_time)
+    hours, remainder = divmod(uptime_seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    uptime_message = f"Uptime: {hours} hours, {minutes} minutes, {seconds} seconds."
+
+    await interaction.response.send_message(uptime_message)
 
 # Embeds
 
@@ -114,5 +127,7 @@ async def helpcommand(interaction):
 
 
 server_on()
+
+# os.getenv('TOKEN')
 
 bot.run(os.getenv('TOKEN'))
