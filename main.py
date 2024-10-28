@@ -94,7 +94,13 @@ async def uptimecommand(interaction):
     hours, remainder = divmod(uptime_seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
 
-    await interaction.response.send_message(f"Uptime: {hours} hours, {minutes} minutes, {seconds} seconds.")
+    embed = discord.Embed(title="💮 𝗪𝗘𝗡𝗗𝗬 𝗖𝗢𝗠𝗠𝗨𝗡𝗜𝗧𝗬",
+                        description=f"> **บอทออนไลน์มากี่ชั่วโมงแล้ว**\n\n> `✅ {hours} ชั่วโมง | {minutes} นาที | {seconds} วินาที`",
+                        colour=0xff00ff)
+
+    embed.set_footer(text="💮 𝗪𝗘𝗡𝗗𝗬 𝗖𝗢𝗠𝗠𝗨𝗡𝗜𝗧𝗬")
+
+    await interaction.response.send_message(embed = embed)
 
 # Embeds
 
