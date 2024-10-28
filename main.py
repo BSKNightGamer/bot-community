@@ -87,7 +87,6 @@ async def namecommand(interaction, name : str):
     await interaction.response.send_message(f"Hello {name}")
 
 @bot.tree.command(name='uptime')
-@app_commands.describe(name = "What's your uptime?")
 async def uptimecommand(interaction):
 
     current_time = time.time()
